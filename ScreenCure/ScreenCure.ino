@@ -26,7 +26,12 @@ Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
 #define BUTTON_UP 4
 #define BUTTON_LEFT 5
 
-float timer = 5.0;
+
+float timer = 60.0;
+float butVert = 5.0;
+float butHorz = 1.0;
+
+const int pPin = 9;
 
 void setup(void) {
   Serial.begin(9600);
@@ -75,8 +80,11 @@ void loop() {
     tft.setTextColor(ST7735_BLACK);
     tft.setCursor(27, 40);
     tft.print(timer,1);
-    timer += 1.0;
-    delay(500);
+    timer += butVert;
+    if (timer < 0) {
+      timer = 0;
+    }
+    delay(200);
     tft.setTextColor(ST7735_RED);
     tft.setCursor(27, 40);
     tft.print(timer,1);
@@ -85,8 +93,11 @@ void loop() {
     tft.setTextColor(ST7735_BLACK);
     tft.setCursor(27, 40);
     tft.print(timer,1);
-    timer -= 1.0;
-    delay(500);
+    timer -= butVert;
+    if (timer < 0) {
+      timer = 0;
+    }
+    delay(200);
     tft.setTextColor(ST7735_RED);
     tft.setCursor(27, 40);
     tft.print(timer,1);
@@ -95,8 +106,11 @@ void loop() {
     tft.setTextColor(ST7735_BLACK);
     tft.setCursor(27, 40);
     tft.print(timer,1);
-    timer -= 0.1;
-    delay(500);
+    timer -= butHorz;
+    if (timer < 0) {
+      timer = 0;
+    }
+    delay(200);
     tft.setTextColor(ST7735_RED);
     tft.setCursor(27, 40);
     tft.print(timer,1);
@@ -105,8 +119,11 @@ void loop() {
     tft.setTextColor(ST7735_BLACK);
     tft.setCursor(27, 40);
     tft.print(timer,1);
-    timer += 0.1;
-    delay(500);
+    timer += butHorz;
+    if (timer < 0) {
+      timer = 0;
+    }
+    delay(200);
     tft.setTextColor(ST7735_RED);
     tft.setCursor(27, 40);
     tft.print(timer,1);
