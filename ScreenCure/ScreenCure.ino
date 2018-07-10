@@ -48,15 +48,17 @@ void setup(void) {
   tft.setTextSize(2);
   tft.setTextColor(ST7735_WHITE);
   tft.setCursor(0, 0);
-  tft.print("Set timer:");
-  tft.setTextSize(4);
+  tft.print("Cure time:");
+  tft.setTextSize(5);
   tft.setTextColor(ST7735_RED);
-  tft.setCursor(27, 40);
+  tft.setCursor(20, 40);
   tft.print(timer,1);
   tft.setTextSize(1);
   tft.setTextColor(ST7735_WHITE);
-  tft.setCursor(50, 110);
-  tft.print("UTA-FabLab");
+  tft.setCursor(38, 110);
+  tft.print("McScreeny Cure");
+  tft.setCursor(50, 120);
+  tft.print("UTA FabLab");
 }
 
 
@@ -78,10 +80,10 @@ uint8_t readButton(void) {
 
 void loop() { 
   uint8_t b = readButton();
-  tft.setTextSize(4);
+  tft.setTextSize(5);
   if (b == BUTTON_UP) {
     tft.setTextColor(ST7735_BLACK);
-    tft.setCursor(27, 40);
+    tft.setCursor(20, 40);
     tft.print(timer,1);
     timer += butVert;
     if (timer < 0) {
@@ -89,12 +91,12 @@ void loop() {
     }
     delay(200);
     tft.setTextColor(ST7735_RED);
-    tft.setCursor(27, 40);
+    tft.setCursor(20, 40);
     tft.print(timer,1);
   }
   if (b == BUTTON_DOWN) {
     tft.setTextColor(ST7735_BLACK);
-    tft.setCursor(27, 40);
+    tft.setCursor(20, 40);
     tft.print(timer,1);
     timer -= butVert;
     if (timer < 0) {
@@ -102,12 +104,12 @@ void loop() {
     }
     delay(200);
     tft.setTextColor(ST7735_RED);
-    tft.setCursor(27, 40);
+    tft.setCursor(20, 40);
     tft.print(timer,1);
   }
   if (b == BUTTON_LEFT) {
     tft.setTextColor(ST7735_BLACK);
-    tft.setCursor(27, 40);
+    tft.setCursor(20, 40);
     tft.print(timer,1);
     timer -= butHorz;
     if (timer < 0) {
@@ -115,12 +117,12 @@ void loop() {
     }
     delay(200);
     tft.setTextColor(ST7735_RED);
-    tft.setCursor(27, 40);
+    tft.setCursor(20, 40);
     tft.print(timer,1);
   }
   if (b == BUTTON_RIGHT) {
     tft.setTextColor(ST7735_BLACK);
-    tft.setCursor(27, 40);
+    tft.setCursor(20, 40);
     tft.print(timer,1);
     timer += butHorz;
     if (timer < 0) {
@@ -128,7 +130,7 @@ void loop() {
     }
     delay(200);
     tft.setTextColor(ST7735_RED);
-    tft.setCursor(27, 40);
+    tft.setCursor(20, 40);
     tft.print(timer,1);
   }
   if (b == BUTTON_SELECT) {
@@ -136,12 +138,12 @@ void loop() {
       digitalWrite(pPin, HIGH);
       for (timer; timer>=0.0; timer-=0.3){
             tft.setTextColor(ST7735_RED);
-            tft.setCursor(27, 40);
+            tft.setCursor(20, 40);
             tft.print(timer,1);
             Serial.println(timer);
             delay(100);
             tft.setTextColor(ST7735_BLACK);
-            tft.setCursor(27, 40);
+            tft.setCursor(20, 40);
             tft.print(timer,1);
       }
 
@@ -150,16 +152,32 @@ void loop() {
       Serial.println("END");
       tft.fillScreen(ST7735_BLACK);
       delay(500);
-      tft.setTextSize(4);
-      tft.setTextColor(ST7735_ORANGE);
+      tft.setTextSize(5);
+      tft.setTextColor(ST7735_CYAN);
       tft.setCursor(20, 50);//digitalWrite(LED, LOW);
+      tft.print("DONE");
+      tft.setTextSize(1);
+      tft.setTextColor(ST7735_WHITE);
+      tft.setCursor(38, 110);
+      tft.print("McScreeny Cure");
+      tft.setCursor(50, 120);
+      tft.print("UTA FabLab");
+      delay(1250);      
+      tft.fillScreen(ST7735_BLACK);
+      delay(500);
+      tft.setTextSize(4);
+      tft.setTextColor(ST7735_RED);
+      tft.setCursor(27, 50);//digitalWrite(LED, LOW);
       tft.print("RESET");
       tft.setTextSize(1);
       tft.setTextColor(ST7735_WHITE);
-      tft.setCursor(50, 110);
-      tft.print("UTA-FabLab");
+      tft.setCursor(38, 110);
+      tft.print("McScreeny Cure");
+      tft.setCursor(50, 120);
+      tft.print("UTA FabLab");
       delay(1250);
      }
     }
   }
 }
+
