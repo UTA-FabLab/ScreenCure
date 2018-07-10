@@ -35,6 +35,9 @@ const int pPin = 9;
 
 void setup(void) {
   Serial.begin(9600);
+  // initialize the LED pin as an output:
+  pinMode(pPin, OUTPUT);
+  digitalWrite(pPin, LOW);
 
   // Initialize 1.8" TFT
   tft.initR(INITR_BLACKTAB);   // initialize a ST7735S chip, black tab
@@ -130,7 +133,8 @@ void loop() {
   }
   if (b == BUTTON_SELECT) {
     while (timer != 0.0) {
-      for (timer; timer>=0.0; timer-=0.1){
+      digitalWrite(pPin, HIGH);
+      for (timer; timer>=0.0; timer-=0.3){
             tft.setTextColor(ST7735_RED);
             tft.setCursor(27, 40);
             tft.print(timer,1);
@@ -142,6 +146,7 @@ void loop() {
       }
 
     if (timer <= 0) {
+      digitalWrite(pPin, LOW);
       Serial.println("END");
       tft.fillScreen(ST7735_BLACK);
       delay(500);
