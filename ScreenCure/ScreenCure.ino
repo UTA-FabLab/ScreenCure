@@ -136,12 +136,12 @@ void loop() {
   if (b == BUTTON_SELECT) {
     while (timer != 0.0) {
       digitalWrite(pPin, HIGH);
-      for (timer; timer>=0.0; timer-=0.3){
+      for (timer; timer>=0.0; timer-=1.0){
             tft.setTextColor(ST7735_RED);
             tft.setCursor(20, 40);
             tft.print(timer,1);
             Serial.println(timer);
-            delay(100);
+            delay(970);
             tft.setTextColor(ST7735_BLACK);
             tft.setCursor(20, 40);
             tft.print(timer,1);
