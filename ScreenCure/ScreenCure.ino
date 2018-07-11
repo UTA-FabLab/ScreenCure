@@ -1,6 +1,6 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7735.h>
-#include <SD.h>
+//#include <SD.h>
 #include <SPI.h>
 
 #if defined(__SAM3X8E__)
